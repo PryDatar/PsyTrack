@@ -1,0 +1,21 @@
+# Dossiers
+node_modules/
+.next/
+out/
+
+# Fichiers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.DS_Store
+/*.png
+/*.jpg
+/*.jpeg
+/*.gif
+/*.ico
+/*.svg
+/*.pdf
+
+# Cache
+.cache/

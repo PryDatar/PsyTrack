@@ -1,0 +1,26 @@
+{
+  "name": "psytrack",
+  "version": "1.0.0",
+  "description": "Front and Back-end project to help psychologists meet their patients.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PryDatar/PsyTrack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PryDatar/PsyTrack/issues"
+  },
+  "homepage": "https://github.com/PryDatar/PsyTrack#readme",
+  "dependencies": {
+    "next": "^13.4.7"
+  }
+}
