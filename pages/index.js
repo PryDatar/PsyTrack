@@ -1,22 +1,33 @@
 import React from 'react';
-// import Header from './Header';
 import NavBar from "./NavBar/NavBar";
 import styled from 'styled-components';
 
-
 const HomePage = () => {
   return (
-    <HomeContainer>
+    <div>
       <NavBar />
-      <h1>PsyTrack</h1>
-      <p>Bienvenue sur la page d'accueil !</p>
-    </HomeContainer>
+      <HomeContainer>
+        <Content>
+          <h1>PsyTrack</h1>
+          <p>Bienvenue sur la page d'accueil !</p>
+        </Content>
+      </HomeContainer>
+    </div>
   );
 };
 
 const HomeContainer = styled.div`
-background-color: #0b5394;
-width: 100%;
-height: 100%;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #0b5394;
+`;
+
+const Content = styled.div`
+  text-align: center;
+  color: #fff;
+`;
+
 export default HomePage;
