@@ -1,0 +1,17 @@
+.medication-tracker {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  
+  .medication-item {
+    padding: 1em;
+    border: 1px solid #27004f;
+    border-radius: 5px;
+  }
+  
+  .medication-item h2 {
+    margin-bottom: 0.5em;
+    color: #27004f;
+  }
+  

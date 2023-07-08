@@ -1,0 +1,47 @@
+.healt-card {
+    margin-top: 20px;
+}
+
+.healt-card textarea {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.healt-card button {
+    display: block;
+    width: 100px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.healt-card .entry {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.healt-card .entry-date {
+    background-color: #D8BFD8;
+    color: white;
+    padding: 5px;
+}
+
+.healt-card .entry-text {
+    padding: 10px;
+}
+
+.healt-card .entry-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}

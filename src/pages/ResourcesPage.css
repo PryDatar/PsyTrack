@@ -1,0 +1,19 @@
+.resources-page-container {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .resources-page-title {
+    font-size: 2rem;
+    color: #27004f;
+    margin-bottom: 1rem;
+  }
+  
+  .resources-page-description {
+    font-size: 1.2rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+  

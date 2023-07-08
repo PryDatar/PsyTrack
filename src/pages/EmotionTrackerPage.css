@@ -1,0 +1,13 @@
+.emotion-tracker-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.emotion-tracker-page h1 {
+    color: #333;
+}
+
+.emotion-tracker-page p {
+    color: #666;
+    margin-bottom: 20px;
+}

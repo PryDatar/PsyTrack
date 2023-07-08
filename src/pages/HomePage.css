@@ -1,0 +1,27 @@
+.home-page {
+  margin: 20px;
+  color: #27004f;
+}
+
+.home-page .logo {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.home-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.home-page p, .home-page ul {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.home-page ul {
+  list-style-type: disc;
+  margin-left: 40px;
+}

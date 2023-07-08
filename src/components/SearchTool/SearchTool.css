@@ -1,0 +1,46 @@
+.psychiatrist-list {
+    margin-left: 20px;
+}
+
+.psychiatrist-list img {
+    border-radius: 50%;
+}
+
+.psychiatrist-list button {
+    background-color: #27004f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.psychiatrist-list .psychiatrist {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.psychiatrist-list .psychiatrist img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.psychiatrist-list .psychiatrist div {
+    flex-direction: column;
+}
+
+.psychiatrist-list .psychiatrist h3 {
+    margin: 0;
+}
+
+.psychiatrist-list .psychiatrist p {
+    margin: 5px 0;
+}
+
+.psychiatrist-list .psychiatrist hr {
+    width: 50%;
+    margin-left: 0;
+}

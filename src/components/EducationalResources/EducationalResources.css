@@ -1,0 +1,29 @@
+.website-list-container {
+    margin-top: 20px;
+  }
+  
+  .website-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  .website-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .website-item a {
+    color: #27004f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .website-item a:hover {
+    text-decoration: underline;
+  }
+  
