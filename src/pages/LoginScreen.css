@@ -18,6 +18,19 @@
     margin-bottom: 20px;
 }
 
+.loginScreen .signupButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .loginScreen .signupButtons button {
+    width: 200px;
+    margin-top: 10px;
+  }
+
 .loginScreen button {
     margin: 10px;
     padding: 10px 20px;

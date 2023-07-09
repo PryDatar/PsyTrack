@@ -9,6 +9,8 @@ import EmotionTrackerPage from "./pages/EmotionTrackerPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import MedicationPage from "./pages/MedicationPage";
 import LoginScreen from "./pages/LoginScreen";
+import DoctorSignup from './pages/DoctorSignupPage.js';
+import PatientSignup from './pages/PatientSignupPage';
 
 function AppRouter() {
     const [iamPatient, setIamPatient] = useState(null);
@@ -23,7 +25,9 @@ function AppRouter() {
         return (
             <Router>
                 <Routes>
-                    <Route path="/" element={<LoginScreen setIamPatient={handleLogin} />} />
+                    <Route path="/" element={<LoginScreen setIamPatient={handleLogin} setLoginScreen={setLoginScreen}/>} />
+                    <Route path="/signup/doctor" component={<DoctorSignup />} />
+                    <Route path="/signup/patient" component={<PatientSignup />} />
                 </Routes>
             </Router>
         );

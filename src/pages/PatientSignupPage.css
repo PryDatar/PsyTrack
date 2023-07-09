@@ -1,0 +1,35 @@
+.patientSignupPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .patientSignupPage h1 {
+    margin-bottom: 20px;
+  }
+  
+  .patientSignupPage input {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  
+  .patientSignupPage button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #27004f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .patientSignupPage button:hover {
+    background-color: #1e003a;
+  }
+  
