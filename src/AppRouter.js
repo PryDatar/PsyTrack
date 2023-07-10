@@ -16,22 +16,19 @@ function AppRouter() {
     const [iamPatient, setIamPatient] = useState(null);
     const [loginScreen, setLoginScreen] = useState(true);
 
-    const handleLogin = (isPatient) => {
-        setIamPatient(isPatient);
-        setLoginScreen(false);
-    }
 
     if (loginScreen) {
         return (
             <Router>
                 <Routes>
-                    <Route path="/" element={<LoginScreen setIamPatient={handleLogin} setLoginScreen={setLoginScreen}/>} />
-                    <Route path="/signup/doctor" component={<DoctorSignup />} />
-                    <Route path="/signup/patient" component={<PatientSignup />} />
+                <Route path="/" element={<LoginScreen setIamPatient={setIamPatient} setLoginScreen={setLoginScreen}/>} />
+                <Route path="/signup/doctor" element={<DoctorSignup />} />
+                <Route path="/signup/patient" element={<PatientSignup setIamPatient={setIamPatient} />} />
                 </Routes>
             </Router>
         );
-    } else {
+    } else if (iamPatient !== null)
+    {
         return (
             <Router>
                 <NavBar iamPatient={iamPatient}/>

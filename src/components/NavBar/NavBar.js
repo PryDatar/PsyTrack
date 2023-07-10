@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
+
 const NavBar = ({ iamPatient }) => {
   return (
+
     <div className = "nav-container">
         <nav className="nav">
             <ul className={iamPatient ? "nav-links" : "nav-links-left"}>

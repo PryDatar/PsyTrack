@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./PatientSignupPage.css";
 
-function PatientSignupPage() {
+
+function PatientSignupPage({setIamPatient}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSignup = () => {
-    axios.post('/auth/signup', { email, password, isDoctor: false })
+    axios.post('http://localhost:5000/auth/signup', { email, password, isDoctor: false })
       .then(response => {
-        // Redirect to the home page
+        navigate('/');
+        setIamPatient(true);
+        //console.log(`Sent email: "${email}", Sent psw : "${password}"`);
       })
       .catch(error => {
+        console.log("Oops Patient couldnt post")
         // Handle error
       });
   };

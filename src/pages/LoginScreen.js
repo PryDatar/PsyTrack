@@ -7,17 +7,23 @@ import logo from '../psytrack.png';
 function LoginScreen({ setIamPatient, setLoginScreen }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null); // Add this line
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    axios.post('/auth/login', { email, password })
+    axios.post('http://localhost:5000/auth/login', { email, password })
       .then(response => {
-        // Save the token in the state or in the local storage
+        console.log(response.data);
+        setIamPatient(!response.data.isDoctor);
+        localStorage.setItem('token', response.data.token);
         setLoginScreen(false); // Set loginScreen to false
-        navigate('/home'); // Redirect to the home page
+        navigate('/'); // Redirect to the home page
       })
       .catch(error => {
         // Handle error
+        if (error.response && error.response.data.message) {
+          setErrorMessage(error.response.data.message); // Set the error message
+        }
       });
   };
 
@@ -28,6 +34,7 @@ function LoginScreen({ setIamPatient, setLoginScreen }) {
       <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
       <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
       <button onClick={handleLogin}>Se connecter</button>
+      {errorMessage && <p>{errorMessage}</p>} {/* Display the error message if it exists */}
       <div className="signupButtons">
         <Link to="/signup/doctor"><button>S'inscrire en tant que médecin</button></Link>
         <Link to="/signup/patient"><button>S'inscrire en tant que patient</button></Link>
@@ -37,3 +44,4 @@ function LoginScreen({ setIamPatient, setLoginScreen }) {
 }
 
 export default LoginScreen;
+
