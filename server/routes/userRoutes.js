@@ -64,10 +64,59 @@ router.get('/profile', auth, async (req, res) => {
   }
 });
 
-router.get('/psychiatrists', async (req, res) => {
+router.get('/psychiatrists', auth, async (req, res) => {
   const psychiatrists = await User.find({ 'profile.isVisibleToPatients': true });
   res.json(psychiatrists);
-  console.log(psychiatrists)
+});
+
+router.get('/getuser', auth, async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    // Trouver l'utilisateur avec le même nom
+    const user = await User.findOne({ 'profile.name': name });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Répondre avec l'utilisateur
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/getUserId', auth, (req, res) => {
+  const userId = req.user._id; // Obtenir l'ID de l'utilisateur actuel
+  res.json({ userId });
+});
+
+router.post('/connect', auth, async (req, res) => {
+  const patientId = req.body.userId;
+  const psychiatristId = req.body.psyId;
+  try {
+    const patient = await User.findById(patientId);
+    const psychiatrist = await User.findById(psychiatristId);
+
+    if (!patient || !psychiatrist) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Ajouter l'ID du psychiatre à la liste confirmedRelations du patient
+    patient.confirmedRelations.addToSet(psychiatristId);
+
+    // Ajouter l'ID du patient à la liste confirmedRelations du psychiatre
+    psychiatrist.confirmedRelations.addToSet(patientId);
+
+    // Sauvegarder les modifications
+    await patient.save();
+    await psychiatrist.save();
+
+    res.json({ message: 'Relations updated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 module.exports = router;

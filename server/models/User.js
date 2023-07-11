@@ -18,6 +18,14 @@ const UserSchema = new mongoose.Schema({
       default: false,
     }
   },
+  pendingRelations:{
+    type: [String],
+    default: [],
+  },
+  confirmedRelations: {
+    type: [String],
+    default: [],
+  },
 });
 
 UserSchema.pre('save', function(next) {
