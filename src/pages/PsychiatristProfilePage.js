@@ -65,7 +65,6 @@ const PsychiatristProfilePage = () => {
     formData.append('email', profile.email);
     formData.append('address', profile.address);
     formData.append('isVisibleToPatients', isVisibleToPatients);
-    console.log(formData)
   
     if (file) {
       formData.append('avatar', file);

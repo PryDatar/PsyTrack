@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
     isVisibleToPatients: {
       type: Boolean,
       default: false,
-    },
+    }
   },
 });
 
