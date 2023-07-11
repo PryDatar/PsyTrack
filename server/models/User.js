@@ -5,7 +5,19 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   isDoctor: { type: Boolean, required: true },
-  // Add other fields as needed
+  profile: {
+    name: String,
+    shortDescription: String,
+    longDescription: String,
+    avatar: String,
+    phoneNumber: String,
+    email: String,
+    address: String,
+  },
+  isVisibleToPatients: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 UserSchema.pre('save', function(next) {

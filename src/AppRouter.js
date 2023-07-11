@@ -11,6 +11,7 @@ import MedicationPage from "./pages/MedicationPage";
 import LoginScreen from "./pages/LoginScreen";
 import DoctorSignup from './pages/DoctorSignupPage.js';
 import PatientSignup from './pages/PatientSignupPage';
+import PsychiatristProfilePage from "./pages/PsychiatristProfilePage";
 
 function AppRouter() {
     const [iamPatient, setIamPatient] = useState(null);
@@ -43,7 +44,10 @@ function AppRouter() {
                             <Route path="/Medication" element={<MedicationPage />} />
                         </>
                     ) : (
-                        <Route path="/HealthCard" element={<HealthCardPage />} />
+                        <>
+                            <Route path="/HealthCard" element={<HealthCardPage />} />
+                            <Route path="/Profile" element={<PsychiatristProfilePage />} />
+                        </>
                     )}
                 </Routes>
             </Router>

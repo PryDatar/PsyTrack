@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const auth = require('./middleware/auth');
+const multer = require('multer');
 
 // Load environment variables
 dotenv.config();
@@ -14,8 +18,22 @@ app.use(cors());
 
 // Enable JSON body parsing
 app.use(express.json());
-const authRoutes = require('./routes/authRoutes');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
+
+app.use('/uploads', express.static('uploads'));
+
 app.use('/auth', authRoutes);
+app.use('/api/user', auth, userRoutes); // Add this line
 
 // Define a test route
 app.get('/', (req, res) => {

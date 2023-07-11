@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
@@ -24,9 +25,10 @@ router.post('/signup', async (req, res) => {
     await user.save();
 
     // Respond with success
-    res.json({ message: 'User created successfully' })
+    res.json({ message: 'User created successfully' });
     console.log('User created successfully');
   } catch (error) {
+    console.error(`Error occurred during signup: ${error}`);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -36,9 +38,6 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log(`Received email: ${email}`);
-    console.log(`Received password: ${password}`);
-
     // Find the user
     const user = await User.findOne({ email });
     if (!user) {
@@ -46,30 +45,21 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    console.log(`Found user with email: ${email}`);
-    
     // Check the password
     const validPassword = await bcrypt.compare(password, user.password);
-      // rest of your code
-
-
-    console.log(`Password match result: ${validPassword}`);
-
     if (!validPassword) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
     // Create a token
-    const token = jwt.sign({ userId: user._id }, 'your_jwt_secret');
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
     // Respond with the token
-    res.json({ token , isDoctor: user.isDoctor });
+    res.json({ token, isDoctor: user.isDoctor });
   } catch (error) {
     console.error(`Error occurred during login: ${error}`);
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-
 
 module.exports = router;

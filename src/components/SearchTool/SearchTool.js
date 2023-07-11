@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
+import axios from 'axios';
+
 import './SearchTool.css';
 
 
@@ -116,6 +118,7 @@ let psychiatrists = [
 ];
 
 const PsychiatristList = () => {
+  const [psychiatrists, setPsychiatrists] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const handleExpand = (index) => {
@@ -125,6 +128,14 @@ const PsychiatristList = () => {
       setExpandedIndex(index);
     }
   };
+
+  useEffect(() => {
+    const fetchPsychiatrists = async () => {
+      const response = await axios.get('http://localhost:5000/psychiatrists'); // Utilisez votre URL d'API correcte
+      setPsychiatrists(response.data);
+    };
+    fetchPsychiatrists();
+  }, []);
 
   return (
     <div className="psychiatrist-list">

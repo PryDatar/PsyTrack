@@ -13,9 +13,15 @@ const NavBar = ({ iamPatient }) => {
                 <Link to={{ pathname: "/" }}>Accueil</Link>
                 </li>
                 {!iamPatient && (
+                    <>
                     <li>
                     <Link to={{ pathname: "/healthcard" }}>Carnet de Santé</Link>
                     </li>
+                    <li>
+                    <Link to={{ pathname: "/profile" }}>Profile</Link>
+                    </li>
+                    </>
+                    
                 )}
                 {iamPatient && (
                     <>

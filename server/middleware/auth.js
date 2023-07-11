@@ -1,23 +1,23 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-const UserSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    isDoctor: {
-        type: Boolean,
-        default: false
+const auth = async (req, res, next) => {
+  try {
+    const token = req.header('Authorization').replace('Bearer ', '');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+    const user = await User.findOne({ _id: decoded.userId });
+
+    if (!user) {
+      throw new Error();
     }
-    // Vous pouvez ajouter d'autres champs si nécessaire
-});
 
-const User = mongoose.model('User', UserSchema);
+    req.token = token;
+    req.user = user;
+    next();
+  } catch (e) {
+    res.status(401).send({ error: 'Please authenticate.' });
+  }
+};
 
-module.exports = User;
+module.exports = auth;
