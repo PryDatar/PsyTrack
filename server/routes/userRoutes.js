@@ -67,6 +67,7 @@ router.get('/profile', auth, async (req, res) => {
 router.get('/psychiatrists', async (req, res) => {
   const psychiatrists = await User.find({ 'profile.isVisibleToPatients': true });
   res.json(psychiatrists);
+  console.log(psychiatrists)
 });
 
 module.exports = router;

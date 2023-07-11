@@ -13,10 +13,10 @@ const UserSchema = new mongoose.Schema({
     phoneNumber: String,
     email: String,
     address: String,
-  },
-  isVisibleToPatients: {
-    type: Boolean,
-    default: false,
+    isVisibleToPatients: {
+      type: Boolean,
+      default: false,
+    },
   },
 });
 

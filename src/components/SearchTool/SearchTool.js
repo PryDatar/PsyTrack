@@ -4,7 +4,7 @@ import axios from 'axios';
 import './SearchTool.css';
 
 
-let psychiatrists = [
+let psys = [
   {
     name: "Dr. Jean Dupont",
     shortDescription:
@@ -118,7 +118,7 @@ let psychiatrists = [
 ];
 
 const PsychiatristList = () => {
-  const [psychiatrists, setPsychiatrists] = useState([]);
+  const [psychiatrists, setPsychiatrists] = useState(psys);
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const handleExpand = (index) => {

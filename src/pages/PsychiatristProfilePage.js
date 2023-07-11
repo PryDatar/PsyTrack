@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from "./PsychiatristProfilePage.css"
-import UserProfile from "../components/UserProfile/UserProfile";
+import UserProfile from "../components/UserProfile/UserProfile"
 
 const PsychiatristProfilePage = () => {
   const [profile, setProfile] = useState({
@@ -65,6 +65,8 @@ const PsychiatristProfilePage = () => {
     formData.append('email', profile.email);
     formData.append('address', profile.address);
     formData.append('isVisibleToPatients', isVisibleToPatients);
+    console.log(formData)
+  
     if (file) {
       formData.append('avatar', file);
     }
