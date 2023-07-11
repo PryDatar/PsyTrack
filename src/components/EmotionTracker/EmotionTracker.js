@@ -1,41 +1,47 @@
-import React, { useState } from 'react';
-import './EmotionTracker.css';
+import React, { useState } from "react";
 
-const EmotionTracker = () => {
-    const [emotion, setEmotion] = useState('');
-    const [entries, setEntries] = useState([]);
+const EmotionTracker = ({ onCreateEntry }) => {
+  const [emotion, setEmotion] = useState("");
+  const [intensity, setIntensity] = useState(0);
+  const [note, setNote] = useState("");
 
-    const handleEmotionChange = (event) => {
-        setEmotion(event.target.value);
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onCreateEntry(emotion, intensity, note);
+    setEmotion("");
+    setIntensity(0);
+    setNote("");
+  };
 
-    const handleEmotionSave = () => {
-        const newEntry = {
-            date: new Date(),
-            text: emotion
-        };
-        setEntries([newEntry, ...entries]);
-        setEmotion('');
-    }
-
-    const handleEntryDelete = (indexToDelete) => {
-        setEntries(entries.filter((entry, index) => index !== indexToDelete));
-    }
-
-    return (
-        <div className="emotion-tracker">
-            <textarea value={emotion} onChange={handleEmotionChange} />
-            <button onClick={handleEmotionSave}>Enregistrer</button>
-            <h2>Journal de bord</h2>
-            {entries.map((entry, index) => (
-                <div key={index} className="entry">
-                    <div className="entry-date">{entry.date.toLocaleString()}</div>
-                    <div className="entry-text">{entry.text}</div>
-                    <button className="entry-delete" onClick={() => handleEntryDelete(index)}>🗑️</button>
-                </div>
-            ))}
-        </div>
-    );
-}
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Emotion:
+        <input
+          type="text"
+          value={emotion}
+          onChange={(e) => setEmotion(e.target.value)}
+        />
+      </label>
+      <label>
+        Intensity:
+        <input
+          type="number"
+          value={intensity}
+          onChange={(e) => setIntensity(e.target.value)}
+        />
+      </label>
+      <label>
+        Note:
+        <textarea
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+        />
+      </label>
+      <button type="submit">Add Entry</button>
+    </form>
+  );
+};
 
 export default EmotionTracker;
+
