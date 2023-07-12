@@ -65,10 +65,10 @@ const UserProfile = ({ user }) => {
       <div style={styles.userProfileDetails}>
         <h3 style={styles.userProfileName}>{user.name}</h3>
         <p style={styles.userProfileDescription}>
-          {user.shortDescription}
+          {user.shortDescription == "undefined" ? user.shortDescription : ""}
         </p>
         <p style={styles.userProfileDescription}>
-          {user.longDescription}
+          {user.longDescription == "undefined" ? user.longDescription : ""}
         </p>
         <hr style={styles.userProfileHr} />
         <div style={styles.userProfileContactInfo}>
