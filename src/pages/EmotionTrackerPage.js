@@ -11,7 +11,7 @@ const EmotionTrackerPage = () => {
   useEffect(() => {
     const fetchEntries = async () => {
       const config = {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
       };
 
     axios.get('http://localhost:5000/api/emotion/entries', config)
@@ -30,7 +30,7 @@ const EmotionTrackerPage = () => {
 
   const handleCreateEntry = (emotion, intensity, note) => {
     const config = {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
     };
     var options = {
         timeZone: "Europe/Paris",

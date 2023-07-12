@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Select, { components } from "react-select";
-import { FaBeer } from 'react-icons/fa'
 import axios from 'axios';
 import './HealthCard.css';
 import UserSelector from '../UserSelector/UserSelector';
@@ -20,7 +18,7 @@ const HealtCard = () => {
     const [entries, setEntries] = useState({});
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`

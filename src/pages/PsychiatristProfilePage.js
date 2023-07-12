@@ -3,8 +3,10 @@ import axios from 'axios';
 import styles from "./PsychiatristProfilePage.css"
 import UserProfile from "../components/UserProfile/UserProfile"
 import PatientContainer from "../components/PatientContainer/PatientContainer"
+import { useLocation } from 'react-router-dom';
 
 const PsychiatristProfilePage = () => {
+  const location = useLocation();
   const [profile, setProfile] = useState({
     name: "",
     shortDescription: "",
@@ -24,13 +26,12 @@ const PsychiatristProfilePage = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const config = {
       headers: {
         Authorization: `Bearer ${token}`
       }
     };
-    console.log(config)
     // Récupérer le profil lors du chargement de la page
     axios.get('http://localhost:5000/api/user/profile', config)
       .then(response => {
@@ -41,7 +42,7 @@ const PsychiatristProfilePage = () => {
         console.error("Erreur lors de la récupération du profil", error);
         setLoading(false);
       });
-  }, []);
+  }, [location.key]);
 
 
   const handleFileChange = (event) => {
@@ -71,7 +72,7 @@ const PsychiatristProfilePage = () => {
       formData.append('avatar', file);
     }
   
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,

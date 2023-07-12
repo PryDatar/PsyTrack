@@ -3,7 +3,6 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const User = require('../models/User');
-const PatientSch = require('../models/Patient');
 
 const auth = require('../middleware/auth');
 const authPa = require('../middleware/auth');
@@ -54,18 +53,27 @@ router.post('/profile', auth, upload.single('avatar'), async (req, res) => {
 router.get('/profile', auth, async (req, res) => {
   try {
     const userId = req.user._id;
-    // Trouver l'utilisateur
+
     const user = await User.findById(userId);
+    //console.log("Voici le user" + user)
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Répondre avec le profil
-    res.json(user.profile);
+    // Force a profile update before returning
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userId },
+      { $set: { profile: user.profile } },
+      { new: true }  // Return the updated document
+    );
+
+    // Respond with the updated profile
+    res.json(updatedUser.profile);
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 
 router.get('/psychiatrists', auth, async (req, res) => {
@@ -137,10 +145,8 @@ router.get('/getAllPatients', auth, async (req, res) => {
 
     // Récupérer les confirmedRelations de l'utilisateur
     const confirmedRelations = user.confirmedRelations;
-    console.log(confirmedRelations)
 
     const users = await User.find({ _id: { $in: confirmedRelations } });
-    console.log(users)
 
     res.json({ users });
   } catch (error) {

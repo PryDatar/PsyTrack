@@ -14,7 +14,7 @@ function LoginScreen({ setIamPatient, setLoginScreen }) {
     try {
       const response = await axios.post('http://localhost:5000/auth/login', { email, password });
       setIamPatient(!response.data.isDoctor);
-      localStorage.setItem('token', response.data.token);
+      sessionStorage.setItem('token', response.data.token);
       console.log("token :")
       console.log(response.data.token)
       setLoginScreen(false);
