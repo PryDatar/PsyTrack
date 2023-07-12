@@ -121,6 +121,7 @@ router.post('/connect', auth, async (req, res) => {
 
 router.get('/getAllPatients', auth, async (req, res) => {
   const userId = req.user._id;
+  console.log(userId);
 
   try {
     // Trouver l'utilisateur par son ID
@@ -132,8 +133,10 @@ router.get('/getAllPatients', auth, async (req, res) => {
 
     // Récupérer les confirmedRelations de l'utilisateur
     const confirmedRelations = user.confirmedRelations;
+    console.log(confirmedRelations)
 
     const users = await User.find({ _id: { $in: confirmedRelations } });
+    console.log(users)
 
     res.json({ users });
   } catch (error) {
