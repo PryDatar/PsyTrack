@@ -40,6 +40,9 @@ const NavBar = ({ iamPatient }) => {
                         <li>
                         <Link to={{ pathname: "/medication" }}>Traitement</Link>
                         </li>
+                        <li>
+                        <Link to={{ pathname: "/patientprofile" }}>Profil</Link>
+                        </li>
                     </>
                 )}
             </ul>
