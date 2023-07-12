@@ -1,46 +1,54 @@
 .psychiatrist-list {
-    margin-left: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.psychiatrist-list img {
+.psychiatrist-card {
+    width: 80%;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.psychiatrist-card img {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    margin-bottom: 20px;
 }
 
-.psychiatrist-list button {
+.psychiatrist-card h3 {
+    margin: 0;
+    color: #27004f;
+    font-size: 1.5em;
+}
+
+.psychiatrist-card p {
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.psychiatrist-card button {
     background-color: #27004f;
     color: white;
     border: none;
-    padding: 10px;
+    border-radius: 15px;
+    padding: 10px 20px;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    margin: 10px;
 }
 
-.psychiatrist-list .psychiatrist {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.psychiatrist-list .psychiatrist img {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-}
-
-.psychiatrist-list .psychiatrist div {
-    flex-direction: column;
-}
-
-.psychiatrist-list .psychiatrist h3 {
-    margin: 0;
-}
-
-.psychiatrist-list .psychiatrist p {
-    margin: 5px 0;
-}
-
-.psychiatrist-list .psychiatrist hr {
-    width: 50%;
-    margin-left: 0;
+.psychiatrist-card button:hover {
+    background-color: #673ab7;
 }

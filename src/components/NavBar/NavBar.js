@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import logo from '../../psytrack.png'; 
 
 
 const NavBar = ({ iamPatient }) => {
@@ -10,7 +11,9 @@ const NavBar = ({ iamPatient }) => {
         <nav className="nav">
             <ul className={iamPatient ? "nav-links" : "nav-links-left"}>
                 <li>
-                <Link to={{ pathname: "/" }}>Accueil</Link>
+                <Link to={{ pathname: "/" }}>
+                    <img src={logo} alt="logo" className="logo"/>
+                </Link>
                 </li>
                 {!iamPatient && (
                     <>

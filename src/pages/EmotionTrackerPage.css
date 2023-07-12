@@ -1,13 +1,61 @@
 .emotion-tracker-page {
     padding: 20px;
     font-family: Arial, sans-serif;
+    margin-left: 50px;
+    margin-top: 50px;
+    max-width: 800px;
+    border-radius: 10px;
+    background-color: #f0f8ff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
 .emotion-tracker-page h1 {
     color: #333;
+    font-family: 'Cabin', sans-serif;
 }
 
 .emotion-tracker-page p {
     color: #666;
     margin-bottom: 20px;
+}
+
+.emotion-tracker-page .entry {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #e6ffff;
+    transition: background-color 0.3s;
+}
+
+.emotion-tracker-page .entry:hover {
+    background-color: #d4f1f4;
+}
+
+.loading {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Transition group animations */
+.item-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.item-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.item-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.item-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
 }

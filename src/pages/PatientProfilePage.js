@@ -84,38 +84,38 @@ const PatientProfilePage = () => {
   };
 
   if (loading) {
-    return <div className={styles.loading}>Chargement...</div>;  // Utilisez le style de chargement
+    return <div className={styles.loading}>Chargement...</div>;
   }
-
+  
   return (
-    <div>
-      <h1>Votre profil</h1>
+    <div className={styles.container}>
+      <h1 style={{ fontFamily: 'Arial', fontWeight: 'bold', fontSize: '2em' }}>Votre profil</h1>
       <UserProfile user={profile} />
-      <div className={styles.container} style={{ marginLeft: '50px' }}>
-          <h1>Mise à jour du profil</h1>
-          <form onSubmit={handleSubmit}>
-              <label>
-                  <span>Nom:</span>
-                  <input type="text" name="name" value={profile.name} onChange={handleChange} />
-              </label>
-              <label>
-                Avatar:
-                <input type="file" name="avatar" onChange={handleFileChange} />
-              </label>
-              <label>
-              Téléphone:
-              <input type="text" name="phoneNumber" value={profile.phoneNumber} onChange={handleChange} />
-              </label>
-              <label>
-              Email:
-              <input type="text" name="email" value={profile.email} onChange={handleChange} />
-              </label>
-              <label>
-              Adresse:
-              <input type="text" name="address" value={profile.address} onChange={handleChange} />
-              </label>
-          <input type="submit" value="Mettre à jour le profil" />
-          </form>
+      <div style={{ marginLeft: '50px' }}>
+        <h1 style={{ fontFamily: 'Arial', fontWeight: 'bold', fontSize: '2em' }}>Mise à jour du profil</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span style={{ fontWeight: 'bold' }}>Nom:</span>
+            <input type="text" name="name" value={profile.name} onChange={handleChange} />
+          </label>
+          <label>
+            <span style={{ fontWeight: 'bold' }}>Avatar:</span>
+            <input type="file" name="avatar" onChange={handleFileChange} />
+          </label>
+          <label>
+            <span style={{ fontWeight: 'bold' }}>Téléphone:</span>
+            <input type="text" name="phoneNumber" value={profile.phoneNumber} onChange={handleChange} />
+          </label>
+          <label>
+            <span style={{ fontWeight: 'bold' }}>Email:</span>
+            <input type="text" name="email" value={profile.email} onChange={handleChange} />
+          </label>
+          <label>
+            <span style={{ fontWeight: 'bold' }}>Adresse:</span>
+            <input type="text" name="address" value={profile.address} onChange={handleChange} />
+          </label>
+          <input type="submit" value="Mettre à jour le profil" style={{ backgroundColor: '#D3C0FF', color: 'white', border: 'none', borderRadius: '8px', padding: '10px 20px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1em', transition: 'background-color 0.2s ease', marginTop: '1em', width: '200px' }} />
+        </form>
       </div>
     </div>
   );

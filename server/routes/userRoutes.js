@@ -3,7 +3,10 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const User = require('../models/User');
+const PatientSch = require('../models/Patient');
+
 const auth = require('../middleware/auth');
+const authPa = require('../middleware/auth');
 
 // Configure multer storage
 const storage = multer.diskStorage({
@@ -63,6 +66,7 @@ router.get('/profile', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 router.get('/psychiatrists', auth, async (req, res) => {
   const psychiatrists = await User.find({ 'profile.isVisibleToPatients': true });

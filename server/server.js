@@ -34,7 +34,7 @@ app.use('/uploads', express.static('uploads'));
 // Define routes
 app.use('/auth', authRoutes);
 app.use('/api/user', auth, userRoutes);
-app.use('/api/emotion', emotionRoutes);  // Ajoutez ceci
+app.use('/api/emotion', emotionRoutes);
 
 // Define a test route
 app.get('/', (req, res) => {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import "./EmotionTrackerPage.css"
 import EmotionTracker from '../components/EmotionTracker/EmotionTracker';
 
 const EmotionTrackerPage = () => {
@@ -54,22 +56,29 @@ const EmotionTrackerPage = () => {
   };
 
   if (loading) {
-    return <div>Chargement...</div>;
+    return <div className="loading">Chargement...</div>;
   }
 
   return (
-    <div>
+    <div className="emotion-tracker-page">
       <EmotionTracker onCreateEntry={handleCreateEntry} />
-      {entries.map((entry, index) => (
-        <div key={index}>
-          <p>Date: {entry.date}</p>
-          <p>Emotion: {entry.emotion}</p>
-          <p>Intensity: {Number(entry.intensity)}</p>
-          <p>Note: {entry.note}</p>
-        </div>
-      ))}
+      <TransitionGroup className="entries-container">
+        {entries.map((entry, index) => (
+            <CSSTransition key={index} timeout={500} classNames="item">
+              <div className="entry">
+                <p><b>Date:</b> {entry.date}</p>
+                <p><b>Emotion:</b> {entry.emotion}</p>
+                <p><b>Intensité:</b> {Number(entry.intensity)}</p>
+                <p><b>Note:</b> {entry.note}</p>
+              </div>
+            </CSSTransition>
+        ))}
+      </TransitionGroup>
+      <br/>
+      <br/>
     </div>
-  );
+);
+
 };
 
 export default EmotionTrackerPage;

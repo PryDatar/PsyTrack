@@ -117,43 +117,35 @@ const PsychiatristList = () => {
       {psychiatrists.map((psychiatrist, index) => (
         <div
           key={index}
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            marginBottom: "20px",
-            position: "relative",
-          }}
+          className="psychiatrist-card"
         >
           <img
             src={`http://localhost:5000/${psychiatrist.profile.avatar}`}
             alt="Avatar"
-            style={{ width: "100px", height: "100px", marginRight: "20px" }}
           />
-          <div style={{ flexDirection: "column" }}>
-            <h3>{psychiatrist.profile.name}</h3>
-            <p>{psychiatrist.profile.shortDescription}</p>
-            {expandedIndex === index ? (
-              <div>
-                <p>{psychiatrist.profile.longDescription}</p>
-                <hr style={{ width: "50%", marginLeft: 0 }} />{" "}
-                {/* Ligne horizontale à gauche */}
-                <p>{psychiatrist.profile.phoneNumber}</p>
-                <p>{psychiatrist.profile.email}</p>
-                <p>{psychiatrist.profile.address}</p>
-                <button onClick={() => handleExpand(index)}>
-                  Afficher moins
-                </button>
-              </div>
-            ) : (
-              <button onClick={() => handleExpand(index)}>Afficher plus</button>
-            )
-            }
-          </div>
+          <h3>{psychiatrist.profile.name}</h3>
+          <p>{psychiatrist.profile.shortDescription}</p>
+          {expandedIndex === index ? (
+            <div>
+              <p>{psychiatrist.profile.longDescription}</p>
+              <hr style={{ width: "50%", marginLeft: 0 }} />{" "}
+              <p>{psychiatrist.profile.phoneNumber}</p>
+              <p>{psychiatrist.profile.email}</p>
+              <p>{psychiatrist.profile.address}</p>
+              <button onClick={() => handleExpand(index)}>
+                Afficher moins
+              </button>
+            </div>
+          ) : (
+            <button onClick={() => handleExpand(index)}>Afficher plus</button>
+          )
+          }
           <button onClick={() => handleConnect(psychiatrist)}>Se mettre en relation</button>
         </div>
       ))}
     </div>
-  );
+);
+
 };
 
 export default PsychiatristList;
