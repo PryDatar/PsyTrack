@@ -41,14 +41,14 @@ function AppRouter() {
                             <Route path="/Search" element={<PsychiatristSearchPage />} />
                             <Route path="/Appointments" element={<AppointmentPage />} />
                             <Route path="/EmotionTracker" element={<EmotionTrackerPage />} />
-                            <Route path="/resources" element={<ResourcesPage />} />
+                            <Route path="/ressources" element={<ResourcesPage />} />
                             <Route path="/Medication" element={<MedicationPage />} />
-                            <Route path="/patientprofile" element={<PatientProfilePage />} />
+                            <Route path="/patientprofil" element={<PatientProfilePage />} />
                         </>
                     ) : (
                         <>
                             <Route path="/HealthCard" element={<HealthCardPage />} />
-                            <Route path="/Profile" element={<PsychiatristProfilePage />} />
+                            <Route path="/Profil" element={<PsychiatristProfilePage />} />
                         </>
                     )}
                 </Routes>

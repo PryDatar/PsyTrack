@@ -21,7 +21,7 @@ const NavBar = ({ iamPatient }) => {
                     <Link to={{ pathname: "/healthcard" }}>Carnet de Santé</Link>
                     </li>
                     <li>
-                    <Link to={{ pathname: "/profile" }}>Profile</Link>
+                    <Link to={{ pathname: "/profil" }}>Profil</Link>
                     </li>
                     </>
                     
@@ -38,13 +38,13 @@ const NavBar = ({ iamPatient }) => {
                         <Link to={{ pathname: "/emotiontracker" }}>Suivi des émotions</Link>
                         </li>
                         <li>
-                        <Link to={{ pathname: "/resources" }}>Resources</Link>
+                        <Link to={{ pathname: "/ressources" }}>Ressources</Link>
                         </li>
                         <li>
                         <Link to={{ pathname: "/medication" }}>Traitement</Link>
                         </li>
                         <li>
-                        <Link to={{ pathname: "/patientprofile" }}>Profil</Link>
+                        <Link to={{ pathname: "/patientprofil" }}>Profil</Link>
                         </li>
                     </>
                 )}
