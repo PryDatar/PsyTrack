@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from "./PsychiatristProfilePage.css"
 import UserProfile from "../components/UserProfile/UserProfile"
+import PatientContainer from "../components/PatientContainer/PatientContainer"
 
 const PsychiatristProfilePage = () => {
   const [profile, setProfile] = useState({
@@ -94,7 +95,7 @@ const PsychiatristProfilePage = () => {
 
   return (
     <div>
-      <h1>Votre profile</h1>
+      <h1>Votre profil</h1>
       <UserProfile user={profile} />
       <div className={styles.container} style={{ marginLeft: '50px' }}>
           <h1>Mise à jour du profil</h1>
@@ -136,6 +137,7 @@ const PsychiatristProfilePage = () => {
           <input type="submit" value="Mettre à jour le profil" />
           </form>
       </div>
+      <PatientContainer />
     </div>
   );
 };
