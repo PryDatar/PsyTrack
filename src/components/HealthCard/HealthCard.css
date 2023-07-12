@@ -21,7 +21,7 @@
 }
 
 .healt-card .entry {
-    border: 1px solid #ccc;
+    border: 1px solid #163cba;
     margin-bottom: 10px;
     position: relative;
 }
@@ -34,6 +34,7 @@
 
 .healt-card .entry-text {
     padding: 10px;
+    min-height: 100px;
 }
 
 .healt-card .entry-delete {
@@ -45,3 +46,32 @@
     cursor: pointer;
     padding: 5px;
 }
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    margin: 0 15px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: #27004f;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .button.selected {
+    background-color: #a0a0a0;
+    color: white;
+  }
+  
